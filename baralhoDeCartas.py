@@ -21,9 +21,13 @@ def mostrarBaralho(baralho):
         print(copia[:13])
         del copia[:13]
 
-def distribuir(baralho, jogadores=2):
-
-
+def distribuir(baralho, qtdCartas, jogadores=2):
+    qtde=len(baralho)//(jogadores*qtdCartas)
+    resto=len(baralho)%(jogadores*qtdCartas)
+    print(f'cada jogador deve receber {qtde} cartas')
+    print(f'ainda existem {resto} cartas na mesa')
+    return qtde, resto
+    
 
 
 
