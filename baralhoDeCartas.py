@@ -15,10 +15,11 @@ def gerarBaralho(qtde=1 , coringas=False,embaralhar=False):
     return baralho
 
 def mostrarBaralho(baralho):
-    mostradordebaralho=baralho.copy()
-    tamanho=len(baralho)
-    print(f'o baralho tem {tamanho}')
-    print(baralho)
+    copia = baralho.copy()
+    print(f'O baralho tem {len(baralho)} cartas')
+    while copia:
+        print(copia[:13])
+        del copia[:13]
 
 def distribuir(baralho, jogadores=2):
 
