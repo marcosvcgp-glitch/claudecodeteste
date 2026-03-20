@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(code.cmd --list-extensions)",
+      "Bash(python -c \"import IPython\")"
+    ]
+  }
+}
