@@ -24,17 +24,19 @@ def mostrarBaralho(baralho):
         del copia[:13]
 
 def distribuir(baralho, qtdCartas, jogadores=2):
-    qtde=len(baralho)//(jogadores*qtdCartas)
+    #calcula a quantidade de cartas necessárias pra cada jogador 
     resto=len(baralho)%(jogadores*qtdCartas)
     print(f'cada jogador deve receber {qtde} cartas')
     print(f'ainda existem {resto} cartas na mesa')
     return qtde, resto
 
 def mostrarJogadores(qtde, jogadores, baralho):
+    #mostra  amão de cada um dos jogadores.
     for jogador in jogadores:
         maoDoJogador = baralho[:qtde]
         del baralho[:qtde]
         print(f'a mão do {jogador} é {" ".join(maoDoJogador)}')
+
 
 
 
