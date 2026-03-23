@@ -25,11 +25,9 @@ def mostrarBaralho(baralho):
 
 def distribuirBaralho(baralho, qtdeCartas, qtdejogadores=2):
     # calcula a quantidade de cartas necessárias pra cada jogador 
-    resto=len(baralho)%(qtdejogadores*qtdeCartas)
-    qtde= len(baralho)//(qtdejogadores*qtdeCartas)
-    print(f'cada jogador deve receber {qtde} cartas')
+    resto=len(baralho)-(qtdejogadores*qtdeCartas)
+    print(f'cada jogador deve receber {qtdeCartas} cartas')
     print(f'ainda existem {resto} cartas na mesa')
-    return qtde
 
 def mostrarJogadores(qtde, jogadores, baralho):
     # mostra  amão de cada um dos jogadores.
@@ -168,5 +166,5 @@ while desejaEmb:
 
 baralho= gerarBaralho(qtdeBaralhos, coringas, embaralhar)
 mostrarBaralho(baralho)
-qtdeCartasPorJogador = distribuirBaralho(baralho,qtdeCartas,qtdejogadores)
-mostrarJogadores(qtdeCartasPorJogador, jogadores, baralho)
+distribuirBaralho(baralho,qtdeCartas,qtdejogadores)
+mostrarJogadores(qtdeCartas, jogadores, baralho)
