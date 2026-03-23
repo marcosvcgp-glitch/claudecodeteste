@@ -25,7 +25,7 @@ for letra in frase:
         letra=alfabeto[(indice+chave) %26]
         resultado.append(letra)
         
-    else: #acentos, ç, simbolos e sinais
+    else: #acentos, ç, simbolos e sinais não se alteram 
         resultado.append(letra)
         continue
         
