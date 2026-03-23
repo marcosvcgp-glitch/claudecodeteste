@@ -16,27 +16,29 @@ def gerarBaralho(qtdeBaralhos=1 , coringas=False,embaralhar=False):
     return baralho
 
 def mostrarBaralho(baralho):
-    # printa o baralhon de 13 em 13 e mostra o tamanho total
+    # printa o baralho de 13 em 13 e mostra o tamanho total
     copia = baralho.copy()
     print(f'O baralho tem {len(baralho)} cartas')
     while copia:
         print(copia[:13])
         del copia[:13]
 
-def distribuirBaralho(baralho, qtdeCartas, qtdejogadores=2):
+def calcularBaralho(baralho, qtdeCartas, qtdejogadores=2):
     # calcula a quantidade de cartas necessárias pra cada jogador 
     resto=len(baralho)-(qtdejogadores*qtdeCartas)
     print(f'cada jogador deve receber {qtdeCartas} cartas')
     print(f'ainda existem {resto} cartas na mesa')
 
+
 def mostrarJogadores(qtde, jogadores, baralho):
     # mostra  amão de cada um dos jogadores.
+    baralhoCopia=baralho.copy()
     for jogador in jogadores:
-        maoDoJogador = baralho[:qtde]
-        del baralho[:qtde]
+        maoDoJogador = baralhoCopia[:qtde]
+        del baralhoCopia[:qtde]
         print(f'a mão do {jogador} é {" ".join(maoDoJogador)}')
 
-# selção automatica de baralhos: criarie um dicionário com os cinco jogos mais popilares
+# selção automatica de baralhos: criar um dicionário com os cinco jogos mais populares
 # de cartas para que a seleção seja mais simplificada.
 
 jogosPadrão = {
@@ -113,10 +115,11 @@ while validação:
     else:
         print('por favor escolha um modo de seleção!')
 if modo == 'a':
-    jogo=input(f'por favor, selceione um jogo da lista: \n{listaJogos} :\n').capitalize()
+    jogo=input(f'por favor, selecione um jogo da lista: \n{listaJogos} :\n').capitalize()
     if jogo not in listaJogos:
         print('infelizmente ainda não possuímos esse jogo em nosso banco de jogos!')
         print('por favor selecione as regras de maneira manual!')
+        modo = 'm'
     else:
         qtdeJogadoresMAX = jogosPadrão[jogo]['qtdeJogadoresMAX']
         qtdeJogadoresMIN = jogosPadrão[jogo]['qtdeJogadoresMIN']
@@ -129,7 +132,7 @@ if modo == 'a':
                 print(f'a quntidade de jogadores deve estar entre {qtdeJogadoresMIN} e {qtdeJogadoresMAX}')
             else:
                 validarJogadores = False
-else:
+if modo == 'm':
         qtdeCartas = int(input('quantas cartas cada jogador deve receber? : \n'))
 
         qtdeBaralhos = int(input('quantos baralhos desejam usar? : \n'))
@@ -145,12 +148,6 @@ else:
         
         qtdejogadores= int(input('quantos jogadores desejam jogar? \n'))
 
-jogadores=[]
-i=1
-for _ in range(qtdejogadores):
-    nome=input(f'escreva o nome do jogador {i}: \n').title()
-    i+=1
-    jogadores.append(nome)
 
 desejaEmb= True
 while desejaEmb:
@@ -165,6 +162,23 @@ while desejaEmb:
         print('por favor, decida se quer ou não embaralhar.')
 
 baralho= gerarBaralho(qtdeBaralhos, coringas, embaralhar)
+while True:
+    if qtdejogadores*qtdeCartas > len(baralho):
+        print('sentimos muito, mas o tamanho do baralho não comporta essa quantia de cartas')
+        print('tente reduzir o numero de cartas por jogador ou o numero de jogadores!')
+        qtdejogadores= int(input('quantos jogadores desejam jogar? \n'))
+        qtdeCartas = int(input('quantas cartas cada jogador deve receber? : \n'))
+    else:
+        break
+
+
+jogadores=[]
+i=1
+for _ in range(qtdejogadores):
+    nome=input(f'escreva o nome do jogador {i}: \n').title()
+    i+=1
+    jogadores.append(nome)
+
 mostrarBaralho(baralho)
-distribuirBaralho(baralho,qtdeCartas,qtdejogadores)
+calcularBaralho(baralho,qtdeCartas,qtdejogadores)
 mostrarJogadores(qtdeCartas, jogadores, baralho)
