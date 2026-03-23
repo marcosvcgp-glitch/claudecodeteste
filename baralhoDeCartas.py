@@ -1,4 +1,5 @@
 def gerarBaralho(qtde=1 , coringas=False,embaralhar=False):
+    #cria o número necessario de baralhos e embaralha
     baralho=[]
     naipes = ["♠", "♥", "♦", "♣"]
     valores = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -15,6 +16,7 @@ def gerarBaralho(qtde=1 , coringas=False,embaralhar=False):
     return baralho
 
 def mostrarBaralho(baralho):
+    #printa o baralhon de 13 em 13 e mostra o tamanho total
     copia = baralho.copy()
     print(f'O baralho tem {len(baralho)} cartas')
     while copia:
@@ -27,7 +29,14 @@ def distribuir(baralho, qtdCartas, jogadores=2):
     print(f'cada jogador deve receber {qtde} cartas')
     print(f'ainda existem {resto} cartas na mesa')
     return qtde, resto
-    
+
+def mostrarJogadores(qtde, jogadores, baralho):
+    for jogador in jogadores:
+        maoDoJogador = baralho[:qtde]
+        del baralho[:qtde]
+        print(f'a mão do {jogador} é {" ".join(maoDoJogador)}')
+
+
 
 
 
