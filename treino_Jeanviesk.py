@@ -40,3 +40,31 @@ clientes.insert(1, 'zara')
 del clientes[-1]
 print(clientes)
 podio=tuple(clientes[0:3])
+
+
+# desafios 2:
+vendas = [1250.00, 980.50, 1540.75, 1100.00, 2010.30, 2500.00, 1890.45]
+dias = ("Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom")
+# Mostre cada dia com sua venda no formato: Seg: R$1250.00
+# Calcule e mostre o total de vendas da semana
+# Encontre o dia com a maior venda e mostre: Melhor dia: Sáb com R$2500.00
+# Mostre quantos dias tiveram vendas acima de R$1500.00
+i = 0
+total = 0
+for dia in dias:
+    print(f'{dia}: {vendas[i]}')
+    i += 1
+for valor in vendas:
+    total += valor
+print(total)
+melhor_dia = 0
+for dia in vendas:
+    if melhor_dia < dia:
+        melhor_dia = dia
+        indice_melhor_dia = vendas.index(dia)
+print(f'Melhor dia: {dias[indice_melhor_dia]} com valor de {melhor_dia}')
+contador_de_dias = 0
+for valor in vendas:
+    if valor > 1500:
+        contador_de_dias += 1
+print(contador_de_dias)
