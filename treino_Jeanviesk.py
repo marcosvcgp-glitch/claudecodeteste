@@ -49,11 +49,9 @@ dias = ("Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom")
 # Calcule e mostre o total de vendas da semana
 # Encontre o dia com a maior venda e mostre: Melhor dia: Sáb com R$2500.00
 # Mostre quantos dias tiveram vendas acima de R$1500.00
-i = 0
 total = 0
-for dia in dias:
-    print(f'{dia}: {vendas[i]}')
-    i += 1
+for dia, venda in zip(dias, vendas):
+    print(f'{dia}: {venda}')
 for valor in vendas:
     total += valor
 print(total)
