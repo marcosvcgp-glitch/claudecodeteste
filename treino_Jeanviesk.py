@@ -51,7 +51,7 @@ dias = ("Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom")
 # Mostre quantos dias tiveram vendas acima de R$1500.00
 total = 0
 for dia, venda in zip(dias, vendas):
-    print(f'{dia}: {venda}')
+    print(f'{dia}: R${venda:.2f}')
 for valor in vendas:
     total += valor
 print(total)
@@ -66,3 +66,42 @@ for valor in vendas:
     if valor > 1500:
         contador_de_dias += 1
 print(contador_de_dias)
+
+# desafio 2 parte 2
+senhas = ["abc", "Senh@Forte123", "12345678", "MinhaSenha", "P@ss1", "Prog#2024ok"]
+
+# Para cada senha, usando `for`, verifique e mostre:
+
+# 1. Se tem pelo menos 8 caracteres
+# 2. Se contém pelo menos um número (itere sobre os caracteres da senha com outro `for`)
+# 3. Se contém pelo menos um caractere especial (`@`, `#`, `!`, `$`, `%`)
+# 4. No final, classifique cada senha como `"APROVADA"` (passou nas 3 condições) ou `"REPROVADA"` (falhou em alguma)
+
+# **Exemplo de saída esperada:**
+# "abc" -> REPROVADA (menos de 8 caracteres, sem número, sem especial)
+# "Senh@Forte123" -> APROVADA
+caractere_especial = ('@', '#', '!', '$', '%' )
+for senha in senhas:
+    problemas=[]
+    if len(senha) <= 7:
+        problemas.append('menos de oito caracteres')
+    numero = False
+    for caractere in senha:
+        if caractere.isdigit():
+            numero = True
+            break
+    if numero == False:
+        problemas.append('a senha deve conter ao menos um número')
+    especial = False
+    for caracter in senha:
+        if caracter in caractere_especial:
+            especial=True
+            break
+    if especial == False:
+        problemas.append('a senha deve conter ao menos um caractere especial')
+    if problemas:
+        problemas = ' '.join(problemas)
+        print(f'"{senha}" -> REPROVADA ({problemas}) ')
+    else:
+        print(f'"{senha}" -> APROVADA')
+        
