@@ -104,4 +104,3 @@ for senha in senhas:
         print(f'"{senha}" -> REPROVADA ({problemas}) ')
     else:
         print(f'"{senha}" -> APROVADA')
-        
